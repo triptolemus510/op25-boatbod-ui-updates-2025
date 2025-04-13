@@ -104,20 +104,27 @@ document.addEventListener("DOMContentLoaded", function() {
 		  }
 		});
 	}
-  const sizeInput = document.getElementById("plotSizeControl");
+	
+	loadSettingsFromLocalStorage();	
+	
+	const sizeInput = document.getElementById("plotSizeControl");
   
-  sizeInput.addEventListener("input", () => {
-    const newWidth = parseInt(sizeInput.value, 10);
-    if (!isNaN(newWidth) && newWidth >= 100 && newWidth <= 1000) {
-      document.querySelectorAll(".plot-image").forEach(img => {
-        img.style.width = `${newWidth}px`;
-      });
-    }
-  });
+	sizeInput.addEventListener("input", () => {
+	const newWidth = parseInt(sizeInput.value, 10);
+	if (!isNaN(newWidth) && newWidth >= 100 && newWidth <= 1000) {
+	  document.querySelectorAll(".plot-image").forEach(img => {
+		img.style.width = `${newWidth}px`;
+	  });
+	}
+	});
   
-  handleColumnLayoutChange(mediaQuery);	
+	handleColumnLayoutChange(mediaQuery);	
 	
 	updatePlotButtonStyles();
+	
+	document.getElementById("callHeightControl").addEventListener("input", saveSettingsToLocalStorage);
+	document.getElementById("plotSizeControl").addEventListener("input", saveSettingsToLocalStorage);
+	document.getElementById("smartColorToggle").addEventListener("change", saveSettingsToLocalStorage);	
 	
 //     loadSeenTalkgroups();
     
@@ -865,7 +872,7 @@ function trunk_update(d) {
 		var displaySiteId = d[nac]['stid'] !== undefined ? d[nac]['stid'] : "-";
 		
 		var displaySiteName = getSiteAlias(displaySystemId, displayRfss, displaySiteId);
-		console.log (displaySiteName);
+// 		console.log (displaySiteName);
 
 		if (displayCallSign.length < 2)
 			displayCallSign = "-";
@@ -1628,4 +1635,41 @@ function getTalkgroupNameFromCallHistory(tgid) {
   }
 
   return null; // Not found
+}
+
+function saveSettingsToLocalStorage() {
+  localStorage.setItem("callHeight", document.getElementById("callHeightControl").value);
+  localStorage.setItem("plotWidth", document.getElementById("plotSizeControl").value);
+  localStorage.setItem("smartColors", document.getElementById("smartColorToggle").checked);
+}
+
+function loadSettingsFromLocalStorage() {
+  const callHeight = localStorage.getItem("callHeight") || "600";
+  const plotWidth = localStorage.getItem("plotWidth") || "300";
+  const smartColors = localStorage.getItem("smartColors");
+
+  document.getElementById("callHeightControl").value = callHeight;
+  document.querySelector(".call-history-scroll").style.height = `${callHeight}px`;
+
+  document.getElementById("plotSizeControl").value = plotWidth;
+  document.querySelectorAll(".plot-image").forEach(img => {
+    img.style.width = `${plotWidth}px`;
+  });
+
+  const smartColorEnabled = smartColors === null ? true : smartColors === "true";
+  document.getElementById("smartColorToggle").checked = smartColorEnabled;
+}
+
+function showHome() {
+  const settings = document.getElementById("settings-container");
+  const about = document.getElementById("about-container");
+
+  if (settings) settings.style.display = "none";
+  if (about) about.style.display = "none";
+
+  const btnSettings = document.getElementById("btn-settings");
+  const btnAbout = document.getElementById("btn-about");
+
+  if (btnSettings) btnSettings.style.color = "";
+  if (btnAbout) btnAbout.style.color = "";
 }

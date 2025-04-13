@@ -7,7 +7,7 @@ There is also an addition of config.js in the www-static folder which adds the v
 
 This is tested with P25 only, so far.
 
-# Instruction
+# Instructions
 
 1. replace existing main.js, main.css in www/www-static
 2. add new config.js to www/www-static

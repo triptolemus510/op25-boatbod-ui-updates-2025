@@ -60,51 +60,75 @@
 		</td></tr>
 		</table>
 		
-      <table class="outer-table" id="settings-container" style="display: none; text-align:left;">
-		<tr>
-		<td>
-			<input type="button" class="small-button" name="c_dmp" id="s2_ch_dmp" value="Log Talkgroups" title="Log TGs" onclick="javascript:f_dump_button(0);"> Log talkgroups to stderr2
-		<br>
-			<input type="button" class="small-button" name="log" value="Log Verbosity" title="Log verbosity" onclick="javascript:f_scan_button(&quot;set_debug&quot;);"> Set logging level
-		<br>
-			<div class="s2_cell_h" id="s2_ch_cap" style="display:none;"><input type="button" class="small-button" id="cap_bn" name="c_cap" value="start capture" title="Capture" onclick="javascript:f_cap_button(0);"></div>
+<table class="outer-table" id="settings-container" style="display: none; text-align:left;">
+  <tr>
+    <!-- LEFT COLUMN -->
+    <td style="vertical-align: top; width: 50%; padding-right: 20px;">
 
-			<div class="s2_cell_h" id="s2_ch_trk" style="display:none;"><input type="button" class="small-button" id="trk_bn" name="c_trk" value="tracking" title="Tracking" onclick="javascript:f_trk_button(-1);"></div>
-		
-		<div>
-			<input type="button" class="small-button" name="lockout" value="Blacklist TGID" title="Blacklist tgid" onclick="javascript:f_scan_button(&quot;lockout&quot;);">
-			&nbsp;&nbsp;
-			<input type="button" class="small-button" name="whitelist" value="Whitelist TGID" title="Whitelist tgid" onclick="javascript:f_scan_button(&quot;whitelist&quot;);">
-		</div>
-		<div style="margin: 5px 0; text-align: left;">
-		  <label for="callHeightControl" style="color: #ccc;">Call History Height (px):</label>
-		  <input type="number" id="callHeightControl" min="200" max="1000" value="500" style="width: 80px; margin-left: 5px;">
-		</div>
-		
-		<div style="margin: 5px 0; text-align: left;">
-		  <label for="plotSizeControl" style="color: #ccc;">Plot Image Width (px):</label>
-		  <input type="number" id="plotSizeControl" min="100" max="1000" value="300" style="width: 80px; margin-left: 5px;">
-		</div>		
-		
-		<div style="margin: 5px 0; text-align: center;">
-		<label for="smartColorToggle" style="color: #ccc;">
-		<input type="checkbox" id="smartColorToggle" checked>
-		Enable Smart Colors
-		</label>
-		</div>
+      <div style="margin-bottom: 10px;">
+        <button class="small-button" id="s2_ch_dmp" onclick="f_dump_button(0);">Log Talkgroups</button>
+        <div style="color: #ccc;">Log talkgroups to stderr2</div>
+      </div>
 
-		<button id="btn-adjsites" onclick="toggleDivById('adjacentSitesContainer', 'btn-adjsites')" value="Toggle Adjacent Sites" class='small-button'>Toggle Adjacent Sites</button>
-		
-		<br>	
-		Stream URL: <span id ="streamURL"> None </a>
-		<br><hr>
-		<div id="div_debug" style="display: block;   font-size: 0.8em;" >
-		<br>Debug Log
-		</div>
+      <div style="margin-bottom: 10px;">
+        <button class="small-button" onclick="f_scan_button('set_debug');">Log Verbosity</button>
+        <div style="color: #ccc;">Set logging level</div>
+      </div>
 
+      <div class="s2_cell_h" id="s2_ch_cap" style="display: none; margin-bottom: 10px;">
+        <button class="small-button" id="cap_bn" onclick="f_cap_button(0);">Start Capture</button>
+      </div>
 
-		</td></tr>
-		</table>		
+      <div class="s2_cell_h" id="s2_ch_trk" style="display: none; margin-bottom: 10px;">
+        <button class="small-button" id="trk_bn" onclick="f_trk_button(-1);">Tracking</button>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <button class="small-button" onclick="f_scan_button('lockout');">Blacklist TGID</button>
+        <button class="small-button" style="margin-left: 10px;" onclick="f_scan_button('whitelist');">Whitelist TGID</button>
+      </div>
+
+    </td>
+
+    <!-- RIGHT COLUMN -->
+    <td style="vertical-align: top; width: 50%; padding-left: 20px;">
+
+      <div style="margin-bottom: 15px;">
+        <label for="callHeightControl" style="color: #ccc;">Call History Height (px):</label><br>
+        <input type="number" id="callHeightControl" min="200" max="1000" value="500" style="width: 80px;">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="plotSizeControl" style="color: #ccc;">Plot Image Width (px):</label><br>
+        <input type="number" id="plotSizeControl" min="100" max="1000" value="300" style="width: 80px;">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="smartColorToggle" style="color: #ccc;">
+          <input type="checkbox" id="smartColorToggle" checked>
+          Enable Smart Colors
+        </label>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <button id="btn-adjsites" onclick="toggleDivById('adjacentSitesContainer', 'btn-adjsites')" class="small-button">
+          Toggle Adjacent Sites
+        </button>
+      </div>
+
+      <div style="margin-bottom: 10px; color: #ccc;">
+        Stream URL: <span id="streamURL">None</span>
+      </div>
+
+      <hr style="margin: 10px 0;">
+
+      <div id="div_debug" style="font-size: 0.8em;">
+        <strong>Debug Log</strong>
+      </div>
+
+    </td>
+  </tr>
+</table>
 
   <table class="outer-table">
     <tr>
@@ -138,10 +162,6 @@
             <span class="small-label">Emergency: </span><span class="small-value" id="displayEmg">-</span> &nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span class="small-label">Service: </span> <span class="small-value" id="displayService">-</span>
-            
-            
-            
-            
             
             </td>
           </tr>

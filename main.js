@@ -419,12 +419,9 @@ function channel_update(d) {
             current_tgid = d[c_id]['tgid'];
             c_tag = d[c_id]['tag'];
             
-
-            
             c_srcaddr = d[c_id]['srcaddr'];
             c_srctag = d[c_id]['srctag'];
             
-                    
             c_stream_url = d[c_id]['stream_url'];
             capture_active = d[c_id]['capture'];
             hold_tgid = d[c_id]['hold_tgid'];
@@ -866,6 +863,9 @@ function trunk_update(d) {
 		var displayType = d[nac]['type'] !== undefined ? d[nac]['type'] : "-";
 		var displayRfss = d[nac]['rfid'] !== undefined ? d[nac]['rfid'] : "-";
 		var displaySiteId = d[nac]['stid'] !== undefined ? d[nac]['stid'] : "-";
+		
+		var displaySiteName = getSiteAlias(displaySystemId, displayRfss, displaySiteId);
+		console.log (displaySiteName);
 
 		if (displayCallSign.length < 2)
 			displayCallSign = "-";
@@ -877,7 +877,7 @@ function trunk_update(d) {
 
         html = "<table class=compact-table border=0 borderwidth=0 cellpadding=0 cellspacing=0 width=100%>";
         
-        html += "<tr><th colspan=99 class='th-section'>" + displaySystemName + "</th></tr>";
+        html += "<tr><th colspan=99 class='th-section'>" + displaySiteName + "</th></tr>";
         
         html += "<tr>";
         
@@ -1612,4 +1612,20 @@ function handleColumnLayoutChange(e) {
     // stacked layout (1 column)
     secondCol.style.marginLeft = "";
   }
+}
+
+function getTalkgroupNameFromCallHistory(tgid) {
+  const rows = document.querySelectorAll("#callHistory tbody tr");
+
+  for (const row of rows) {
+    const cells = row.querySelectorAll("td");
+    if (cells.length >= 5) {
+      const tgidText = cells[3].textContent.trim();
+      if (tgidText === String(tgid)) {
+        return cells[4].textContent.trim(); // Return talkgroup name
+      }
+    }
+  }
+
+  return null; // Not found
 }

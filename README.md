@@ -5,7 +5,9 @@ This implementation works on what python already sends over with just one small 
 
 There is also an addition of config.js in the www-static folder which adds the variables for Smart Colors, Site Names, and Presets.
 
-This is tested with P25 only, so far.
+This is tested with P25 only, so far. 
+
+Right now, main.js is full of commented out code and unused stuff which needs to be cleaned up.
 
 # Instructions
 

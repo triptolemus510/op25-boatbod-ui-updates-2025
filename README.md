@@ -11,7 +11,7 @@ Right now, main.js is full of commented out code and unused stuff which needs to
 
 # Instructions
 
-1. replace existing main.js, main.css in www/www-static
+1. replace existing main.js, main.css, index.html in www/www-static
 2. add new config.js to www/www-static
 3. replace existing tk_p25.py in gr-op25_repeater/apps
 4. edit config.js to suit your systems

@@ -457,8 +457,6 @@ function channel_update(d) {
             s2_hc.style['display'] = "";
             s2_ht.style['display'] = "";
             
-
-            
             c_tdma = d[c_id]['tdma'];
             
             displayChannel.innerText	= c_name;
@@ -658,7 +656,7 @@ function patches(d) {
     // Only supported on P25 and Type II currently
     if (!is_p25 && !is_smartnet) {
     	document.getElementById('patchesContainer').style.display = "none";
-        return "";
+        return;
     }
 
     var html = "<table class=compact-table border=0 borderwidth=0 cellpadding=0 cellspacing=0 width=100%>";
@@ -700,7 +698,7 @@ function patches(d) {
     html += "</table><br>";
 
 // end patch table
-	html = replaceTgidsWithTags(html); 
+// 	html = replaceTgidsWithTags(html); 
 	document.getElementById('patchesTable').innerHTML = html;
 	
     return html;
@@ -889,25 +887,25 @@ function trunk_update(d) {
         
         html += "<tr>";
         
-        html += "<td style='text-align:center';><span class=small-label>Callsign</span> <br> <span class=small-value>" + displayCallSign.toString(16).toUpperCase() + "</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>Callsign</span> <br> <span class=trunk-value>" + displayCallSign.toString(16).toUpperCase() + "</span></td>";
 
-        html += "<td style='text-align:center';><span class=small-label>Type</span> <br> <span class=small-value>" + displayType.toString(16).toUpperCase() + "</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>Type</span> <br> <span class=trunk-value>" + displayType.toString(16).toUpperCase() + "</span></td>";
 
-        html += "<td style='text-align:center';><span class=small-label>System ID</span> <br> <span class=small-value>" + displaySystemId.toString(16).toUpperCase() + "</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>System ID</span> <br> <span class=trunk-value>" + displaySystemId.toString(16).toUpperCase() + "</span></td>";
  
-        html += "<td style='text-align:center';><span class=small-label>WACN</span> <br> <span class=small-value>" + displayWacn.toString(16).toUpperCase() + "</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>WACN</span> <br> <span class=trunk-value>" + displayWacn.toString(16).toUpperCase() + "</span></td>";
  
-        html += "<td style='text-align:center';><span class=small-label>NAC</span> <br> <span class=small-value>" + displayNac.toString(16).toUpperCase() + "</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>NAC</span> <br> <span class=trunk-value>" + displayNac.toString(16).toUpperCase() + "</span></td>";
 
-        html += "<td style='text-align:center';><span class=small-label>RFSS</span> <br> <span class=small-value>" + displayRfss.toString(16).toUpperCase() + "</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>RFSS</span> <br> <span class=trunk-value>" + displayRfss.toString(16).toUpperCase() + "</span></td>";
    
-        html += "<td style='text-align:center';><span class=small-label>Site</span> <br> <span class=small-value>" + displaySiteId.toString(16).toUpperCase() + "</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>Site</span> <br> <span class=trunk-value>" + displaySiteId.toString(16).toUpperCase() + "</span></td>";
           
-        html += "<td style='text-align:center';><span class=small-label>Error</span> <br> <span class=small-value>" + error_val + " Hz</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>Error</span> <br> <span class=trunk-value>" + error_val + " Hz</span></td>";
    
-        html += "<td style='text-align:center';><span class=small-label>TSBK</span> <br> <span class=small-value>" + totalTsbk + "</span></td>";
+        html += "<td style='text-align:center';><span class=trunk-label>TSBK</span> <br> <span class=trunk-value>" + totalTsbk + "</span></td>";
   
-        html += "<td colspan=2 style='text-align:center';><span class=small-label>Last TSBK</span> <br> <span class=small-value>" + getTime(tsbkTime) + "</span></td>";        
+        html += "<td colspan=2 style='text-align:center';><span class=trunk-label>Last TSBK</span> <br> <span class=trunk-value>" + getTime(tsbkTime) + "</span></td>";        
    
         html += "</tr>";     
 

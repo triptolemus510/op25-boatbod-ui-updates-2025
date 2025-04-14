@@ -132,6 +132,18 @@ a:hover {
   font-size: 0.8em;
 }
 
+/* The labels and values on the trunk_update/system data */
+.trunk-label {
+  color: #bbb;
+/*   font-size: 0.8em; */
+}
+
+.trunk-value {
+  color: #0ff;
+  font-size: 14px;
+}
+
+
 /* Right panel: logo area */
 .right-logo {
   width: 20%;

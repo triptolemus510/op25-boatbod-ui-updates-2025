@@ -466,7 +466,8 @@ function channel_update(d) {
             plotChannelDisplay.innerText= c_name;
             
             displaySystem.innerText 	= c_system ? c_system : "-";
-   			displayFreq.innerText 		= c_freq / 1000000; 
+   			
+   			displayFreq.innerText = (parseInt(c_freq) / 1000000.0).toFixed(6);
    			
             displayTalkgroup.innerText = c_tag ? c_tag : "Talkgroup " + current_tgid;
             applySmartColorToTgidSpan();

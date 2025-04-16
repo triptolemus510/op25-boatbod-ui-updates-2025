@@ -9,6 +9,8 @@ This is tested with P25 only, so far.
 
 Right now, main.js is full of commented out code and unused stuff which needs to be cleaned up.
 
+This implementation is not tested with rx.py - multi_rx.py is needed.
+
 # Instructions
 
 1. replace existing main.js, main.css, index.html in www/www-static

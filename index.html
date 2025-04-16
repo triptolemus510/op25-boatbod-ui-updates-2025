@@ -21,7 +21,8 @@
 			<div class="nav-left">
 			  <a href="#" class="nav-item" id="btn-home" onclick="showHome();">Home</a>
 			  <a href="#" class="nav-item" id="btn-plot" onclick="toggleDivById('plot-container', 'btn-plot')">Plot</a>
-			  <a href="#" class="nav-item" id="btn-settings" onclick="toggleDivById('settings-container', 'btn-settings')">Settings</a>     
+			  <a href="#" class="nav-item" id="btn-settings" onclick="toggleDivById('settings-container', 'btn-settings')">Settings</a>
+			  <a href="legacy-index.html" class="nav-item" id="btn-legacy">Legacy UI</a>        
 			  <a href="#" class="nav-item" id="btn-about" onclick="toggleDivById('about-container', 'btn-about')">About</a>
 			</div>
 			<div class="nav-right">
@@ -109,11 +110,12 @@
           Enable Smart Colors
         </label>
       </div>
-
+    
       <div style="margin-bottom: 15px;">
-        <button id="btn-adjsites" onclick="toggleDivById('adjacentSitesContainer', 'btn-adjsites')" class="small-button">
-          Toggle Adjacent Sites
-        </button>
+        <label for="adjacentSitesToggle" style="color: #ccc;">
+          <input type="checkbox" id="adjacentSitesToggle" checked>
+          Show Adjacent Sites
+        </label>
       </div>
 
       <div style="margin-bottom: 10px; color: #ccc;">
@@ -240,7 +242,8 @@
 			  <div class="call-history-scroll">
 				<table class="compact-table" id="callHistory">
 				  <thead>
-					<tr><th>Time</th><th>Sys</th><th>Mode</th><th colspan=2>Talkgroup</th></tr>
+				    <tr><th>Time</th><th>Sys</th><th>Mode</th><th colspan=2>Talkgroup</th></tr>
+<!-- 					<tr><th>Time</th><th>Sys</th><th>Mode</th><th colspan=2>Talkgroup</th><th>Source</tr> -->
 				  </thead>
 				  <tbody id="callHistoryBody">
 					<!-- JavaScript will insert <tr> rows here -->

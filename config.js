@@ -26,6 +26,11 @@ const configFile = true;
 // Define the preset buttons
 // No more than 6 allowed
 
+const MAX_HISTORY_ROWS 		= 10; // number of rows to consider "recent" and duplicate by appendCallHistory
+const MAX_HISTORY_SECONDS 	= 5; //// number of rows to consider "recent" and duplicate by appendCallHistory
+const MAX_TG_CHARS 			= 20; // max number of characters for talkgroup tags in freq table
+
+
 const presets = [
   { id: 1, tgid: 7305, label: "Martinez PD" },
   { id: 2, tgid: 7712, label: "CCSO Central" },
